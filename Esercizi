@@ -1,0 +1,24 @@
+from operator import add, truediv, sub, mul, gt, lt
+
+#esercizio 1.4
+A = add(4,sub(2,sub(3,add(6,truediv(4,5)))))
+C = add(A,5)
+B = mul(sub(6,2),sub(2,7))
+D = mul(3,B)
+print(truediv(C,D))
+
+#esercizio 1.5
+#Si scriva una procedura che prenda tre numeri come argomenti e restituisca la somma dei quadrati dei due numeri più grandi.
+def sommaquadrati(x,y):
+    return add(mul(x,x),mul(y,y))
+def F(a,b,c):
+    if gt(b,a) and gt(c,a):
+        return sommaquadrati(b,c)
+    elif gt(a,b) and gt(c,b):
+        return sommaquadrati(a,c)
+    else:
+        return sommaquadrati(a,b)
+a=6
+b=7
+c=5
+print(F(a,b,c))
