@@ -1,0 +1,5 @@
+def Map(F,Ls):
+  if IsEmptyList(Ls):
+    return EmptyList()
+  return MakeList(F(Head(Ls)),Map(F(Tail(Ls))))
+Map prende una lista Ls e applica a ciascuno dei suoi elementi la funzione F, restituendo la lista modificata.
