@@ -1,0 +1,159 @@
+"""
+ESEMPIO DI LIBRERIA: PAIRS LIST
+
+@author: Gualandi
+"""
+
+# Versione della libreria
+__version__ = '0.3.0'
+
+# Lista delle funzioni che voglio esportare
+__all__ = ['EmptyList', 'MakeList', 'Head', 'Tail', 
+           'IsEmptyList', 'IsPairsList', 'PrintList']
+
+# Supporto base per le coppie: funzioni non esportate dalla libreria
+def MakePair(a, b):
+    return a, b
+
+def IsPair(x):
+	return len(x) == 2
+
+def First(x):
+    return x[0]
+
+def Second(x):
+    return x[1]
+
+# Costruttore per il tipo di dati "PairsList"
+def EmptyList():
+    """ Restituisce una lista vuota """
+    return 'EL'
+
+def MakeList(x, Ls=EmptyList()):
+    """ Costruttore di una lista.
+    
+           x : elemento da memorizzare nella lista
+           Ls: coda della lista (deve essere una PairsList) """
+    return MakePair(x, Ls)
+
+
+# Selettori per il tipo di dati "PairsList"
+def Head(Ls):
+    """ Funzione che restituisce la testa della lista Ls """
+    return First(Ls)
+
+def Tail(Ls):
+    """ Funzione che restituisce la coda della lista Ls """
+    return Second(Ls)
+
+def IsEmptyList(Ls):
+    """ Predicato che controlla se la lista Ls è vuota """
+    return Ls == EmptyList()
+      
+def IsPairsList(Ls):
+    """ Predicato che controlla se Ls è una PairsList """
+    if IsEmptyList(Ls):
+        return True
+    if IsPair(Ls):
+        return IsPairsList(Tail(Ls))
+    return False
+
+def PrintList(As):
+    """ Pretty print for a list of elements """
+    def PrintListI(As):
+        if not IsEmptyList(As):
+            print(Head(As), end='')
+            if not IsEmptyList(Tail(As)):            
+                print(', ', end='')
+            PrintListI(Tail(As))
+    print('[', end='')
+    PrintListI(As)
+    print(']') 
+
+
+#### ===> DA COMPLETARE CON LE FUNZIONI E PREDICATI DELL'ESERCITAZIONE 4
+def Arelistequal(As,Bs):
+    if As==EmptyList():
+        return Bs==EmptyList()
+    if Bs==EmptyList():
+        return 'false'
+    if Head(As)==Head(Bs):
+        return Arelistequal(Tail(As), Tail(Bs))
+        
+def MakeIntRange(a,b):
+    if a>=b:
+        return 'a deve essere minore di b!'
+    def MakeI(c):
+        if c>b:
+            return EmptyList()
+        return MakeList(c,MakeI(c+1))
+    return MakeI(a)
+
+'''def Lenght(As):
+    if As==EmptyList():
+        return 0
+    def Boh(As,i):
+        if Tail(As)==EmptyList:
+            return i
+        return Boh(Tail(As),i+1)
+    return Boh(As,1)'''
+
+def Append(As,Bs):
+    if As==EmptyList():
+        return Bs
+    if Bs==EmptyList:
+        return EmptyList()
+    return MakeList(Head(As),Append(Tail(As),Bs))
+
+def Contains(As,value):
+    if As==EmptyList():
+        return 'False'
+    if value==Head(As):
+        return 'True'
+    return Contains(Tail(As),value)
+
+def RemoveFirst(As,value):
+    if As==EmptyList():
+        return As
+    if Head(As)==value:
+        return Tail(As)
+    return MakeList(Head(As),RemoveFirst(Tail(As),value))
+    
+def RemoveAll(As,value):
+    if As==EmptyList():
+        return As
+    if Head(As)==value:
+        return RemoveAll(Tail(As),value)
+    return MakeList(Head(As),RemoveAll(Tail(As),value)) 
+
+def Count(As,value):
+    def Bohh(As,value,i):
+        if As==EmptyList():
+            return 0
+        if Head(As)==value:
+            return Bohh(Tail(As),value,i+1)
+        return Bohh(Tail(As),value,i)
+    return Bohh(As,value,0)
+
+'''def Reverse(As):
+    if As==EmptyList():
+        return EmptyList()
+    return MakeList(Reverse(Tail(As)),Head(As))'''
+    
+def Reverse(As):
+    def R(Ls,Rs):
+        if IsEmptyList(Ls):
+            return Rs
+        return R(Tail(Ls),MakePairList(Head(Ls),Rs))
+    return R(As,EmptyLst())
+
+def MinMax(As):
+    def H(Ls,pair):
+        if IsEmptyList(Ls):
+            return pair
+        a = min(pair[0],Head(Ls))
+        b = max(pair[1], Head(Ls))
+        return H(Tail(Ls),(a,b))
+    if IsEmptyList(As):
+        return ('na','na')
+    return H(Tail(As),(Head(As),Head(As)))
