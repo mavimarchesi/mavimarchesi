@@ -21,7 +21,7 @@ def ComputeStdDev(Ls):
 '''Il problema evidenziato nella slide è che nel momento in cui ci sono due elementi vicini da togliere e tolgo il primo, tutti gli elementi scalano
 di posizione. Questo vuol dire che la posizione del primo elemento (per esempio n=0) è già stata analizzata e secondo il Pc non c'è bisogno di rianalizzarla, anche se in verità il nuovo nel posto n=0 non è più quello di prima, quindi sarebbe da ricontrollare!'''
 def Funzione(Ls,Bs)
-    for a in LS
+    for a in Ls
         if a in Bs
             Ls.remove(a)
 'Per risolvere il problema di prima faccio'
