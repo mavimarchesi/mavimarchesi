@@ -1,0 +1,17 @@
+from math import sqrt
+#ESERCIZIO2
+def ComputeAverage(Ls):
+    return Sum(Ls)/Lenght(Ls)
+OPPURE
+def ComputeAvarageB(Ls):
+    print(S,L = ReduceR(lambda x,y:(x+y[0],1+y[1]), Ls,v=(0,0)))
+'x è il numero della lista, y la coppia t.c. y[0]=sommatoria, y[1]=lunghezza'
+    return S/L
+
+#ESERCIZIO3
+def ComputeStdDev(Ls):
+    S,N=ReduceR(lamba x,y: (x+y[0], 1+y[1], Ls, (0,0)))
+    mu=S/N
+    t=ReduceR(lambda x,y:y*(x-mu)**2, Ls, 0)
+    'mu è la media, t è la funzione'
+    return sqrt(t/N)
