@@ -15,3 +15,17 @@ def ComputeStdDev(Ls):
     t=ReduceR(lambda x,y:y*(x-mu)**2, Ls, 0)
     'mu è la media, t è la funzione'
     return sqrt(t/N)
+
+#ESERCIZIO5 nella slide
+'Comunque uso il ciclo for, guardo se gli elementi di Ls sono in Bs e se ci sono li tolgo da Ls con L.remove'
+'''Il problema evidenziato nella slide è che nel momento in cui ci sono due elementi vicini da togliere e tolgo il primo, tutti gli elementi scalano
+di posizione. Questo vuol dire che la posizione del primo elemento (per esempio n=0) è già stata analizzata e secondo il Pc non c'è bisogno di rianalizzarla, anche se in verità il nuovo nel posto n=0 non è più quello di prima, quindi sarebbe da ricontrollare!'''
+def Funzione(Ls,Bs)
+    for a in LS
+        if a in Bs
+            Ls.remove(a)
+'Per risolvere il problema di prima faccio'
+Cs=Ls[:]
+For a in Cs
+    if a in Bs
+       Ls.remove(a)
