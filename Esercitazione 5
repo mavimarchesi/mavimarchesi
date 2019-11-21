@@ -1,3 +1,14 @@
+def Reduce(F,Ls,v):
+    if IsEmptyList(Ls):
+        return v
+    return F(Head(Ls),Reduce(F,Tail(Ls),v))
+
+#ESERCIZIO1 BOH
+def ReverseRed(Ls,z='EL'):
+    def F(x,y):
+        return MakeList(y,x)
+    return Reduce(Ls,F,z)
+
 from math import sqrt
 #ESERCIZIO2
 def ComputeAverage(Ls):
@@ -16,6 +27,13 @@ def ComputeStdDev(Ls):
     'mu è la media, t è la funzione'
     return sqrt(t/N)
 
+#ESERCIZIO4 NOPE
+'''def Intersect(As, Bs):
+    Cs=()
+    for x in As:
+        if x in Bs:
+            if x not in Cs:
+                Cs=Cs+(x,)'''
 #ESERCIZIO5 nella slide
 'Comunque uso il ciclo for, guardo se gli elementi di Ls sono in Bs e se ci sono li tolgo da Ls con L.remove'
 '''Il problema evidenziato nella slide è che nel momento in cui ci sono due elementi vicini da togliere e tolgo il primo, tutti gli elementi scalano
